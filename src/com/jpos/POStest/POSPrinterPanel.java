@@ -48,9 +48,9 @@ public class POSPrinterPanel extends Component {
     private JCheckBox idleCB;
     private JButton letterQualityButton;
     
-    private JComboBox mapModeCombo;
+    private JComboBox<?> mapModeCombo;
     
-    private JComboBox rotationCombo;
+    private JComboBox<?> rotationCombo;
     
     private JButton beginInsertionButton;
     private JButton endInsertionButton;
@@ -62,24 +62,24 @@ public class POSPrinterPanel extends Component {
     private JButton bottomLogoButton;
     private JButton validateDataButton;
     
-    private JComboBox symbologyCombo;
+    private JComboBox<?> symbologyCombo;
     
     
     private JTextField barCodeHeight;
     private JTextField barCodeWidth;
     private JTextField barCodeData;
-    private JComboBox barCodeAlignmentCombo ;
-    private JComboBox barCodeTextCombo;
+    private JComboBox<?> barCodeAlignmentCombo ;
+    private JComboBox<?> barCodeTextCombo;
     private JButton rotateBarcodeButton;
     
     private JFileChooser bitmapFileChooser;
     private JTextField bitmapFileName;
     private JButton bitmapBrowse;
     private JButton printBitmapButton;
-    private JComboBox bitmapWidth;
-    private JComboBox bitmapAlign;
+    private JComboBox<?> bitmapWidth;
+    private JComboBox<?> bitmapAlign;
     private JButton setBitmapButton;
-    private JComboBox bitmapNumberCombo;
+    private JComboBox<?> bitmapNumberCombo;
     private JButton rotateBitmapButton;
     
     private JLabel pageModeArea;
@@ -87,9 +87,9 @@ public class POSPrinterPanel extends Component {
     private JTextField pageModeHorizontalPos;
     private JTextField pageModeVerticalPos;
     private JTextField pageModePrintArea;
-    private JComboBox pageModeDirectionCombo;
-    private JComboBox pageModeStationCombo;
-    private JComboBox pageModeControlCombo;
+    private JComboBox<?> pageModeDirectionCombo;
+    private JComboBox<?> pageModeStationCombo;
+    private JComboBox<?> pageModeControlCombo;
     
     private JTextArea messages;
     private JScrollPane scrollPane;
@@ -392,7 +392,7 @@ public class POSPrinterPanel extends Component {
         radioPanel.add(jButton);
         radioPanel.add(sButton);
         
-        rotationCombo = new JComboBox(rotationValues);
+        rotationCombo = new JComboBox<Object>(rotationValues);
         rotationCombo.setMaximumSize(new Dimension(180,20));
         rotationCombo.setPreferredSize(new Dimension(180,20));
         rotationCombo.setActionCommand("rotationCombo");
@@ -401,7 +401,7 @@ public class POSPrinterPanel extends Component {
         radioPanel.add(Box.createHorizontalGlue());
         radioPanel.add(rotationCombo);
         
-        mapModeCombo = new JComboBox(mapModeValues);
+        mapModeCombo = new JComboBox<Object>(mapModeValues);
         mapModeCombo.setMaximumSize(new Dimension(100,20));
         mapModeCombo.setPreferredSize(new Dimension(100,20));
         mapModeCombo.setActionCommand("mapModeCombo");
@@ -1236,18 +1236,18 @@ public class POSPrinterPanel extends Component {
             barCodeWidth.setMaximumSize(new Dimension(80,20));
             barCodeWidth.setPreferredSize(new Dimension(80,20));
             
-            barCodeAlignmentCombo = new JComboBox(bcAlignments);
+            barCodeAlignmentCombo = new JComboBox<Object>(bcAlignments);
             barCodeAlignmentCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
             barCodeAlignmentCombo.setMaximumSize(new Dimension(110,20));
             barCodeAlignmentCombo.setPreferredSize(new Dimension(110,20));
             barCodeAlignmentCombo.setEditable(true);
             
-            barCodeTextCombo = new JComboBox(bcTextPos);
+            barCodeTextCombo = new JComboBox<Object>(bcTextPos);
             barCodeTextCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
             barCodeTextCombo.setMaximumSize(new Dimension(110,20));
             barCodeTextCombo.setPreferredSize(new Dimension(110,20));
             
-            symbologyCombo = new JComboBox(bcSymbologies);
+            symbologyCombo = new JComboBox<Object>(bcSymbologies);
             symbologyCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
             symbologyCombo.setMaximumSize(new Dimension(110,20));
             symbologyCombo.setPreferredSize(new Dimension(110,20));
@@ -1432,7 +1432,7 @@ public class POSPrinterPanel extends Component {
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             argumentPanel.add(label);
             
-            bitmapWidth = new JComboBox(bitmapWidths);
+            bitmapWidth = new JComboBox<Object>(bitmapWidths);
             bitmapWidth.setMaximumSize(new Dimension(180,20));
             bitmapWidth.setPreferredSize(new Dimension(180,20));
             argumentPanel.add(bitmapWidth);
@@ -1441,7 +1441,7 @@ public class POSPrinterPanel extends Component {
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             argumentPanel.add(label);
             
-            bitmapAlign = new JComboBox(bitmapAlignments);
+            bitmapAlign = new JComboBox<Object>(bitmapAlignments);
             bitmapAlign.setMaximumSize(new Dimension(180,20));
             bitmapAlign.setPreferredSize(new Dimension(180,20));
             argumentPanel.add(bitmapAlign);
@@ -1451,7 +1451,7 @@ public class POSPrinterPanel extends Component {
             argumentPanel.add(label);
             
             String[] values = new String[]  {"1", "2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20",};
-            bitmapNumberCombo = new JComboBox(values);
+            bitmapNumberCombo = new JComboBox<Object>(values);
             bitmapNumberCombo.setMaximumSize(new Dimension(180,20));
             bitmapNumberCombo.setPreferredSize(new Dimension(180,20));
             argumentPanel.add(bitmapNumberCombo);
@@ -1619,13 +1619,13 @@ public class POSPrinterPanel extends Component {
             pageModePrintArea.setMaximumSize(new Dimension(150,20));
             pageModePrintArea.setPreferredSize(new Dimension(150,20));
             
-            pageModeDirectionCombo = new JComboBox(pmDirections);
+            pageModeDirectionCombo = new JComboBox<Object>(pmDirections);
             pageModeDirectionCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
             pageModeDirectionCombo.setMaximumSize(new Dimension(110,20));
             pageModeDirectionCombo.setPreferredSize(new Dimension(110,20));
             pageModeDirectionCombo.setEditable(false);
             
-            pageModeStationCombo = new JComboBox(pmStations);
+            pageModeStationCombo = new JComboBox<Object>(pmStations);
             pageModeStationCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
             pageModeStationCombo.setMaximumSize(new Dimension(110,20));
             pageModeStationCombo.setPreferredSize(new Dimension(110,20));
@@ -1656,7 +1656,7 @@ public class POSPrinterPanel extends Component {
             buttonsBox.add(clearPrintAreadButton);
             buttonsBox.add(pageModeUpdatePropButton);
             
-            pageModeControlCombo = new JComboBox(pmpCommands);
+            pageModeControlCombo = new JComboBox<Object>(pmpCommands);
             pageModeControlCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
             pageModeControlCombo.setMaximumSize(new Dimension(200,20));
             pageModeControlCombo.setPreferredSize(new Dimension(200,20));
@@ -1764,7 +1764,7 @@ public class POSPrinterPanel extends Component {
         }
     }
     
-    private int getComboBoxIndex(JComboBox box, int strValValue)
+    private int getComboBoxIndex(JComboBox<?> box, int strValValue)
     {    	
     	for(int i=0 ; i< box.getItemCount(); i++)
     	{

@@ -41,16 +41,16 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
     private JCheckBox checkTotalCB;
     private JCheckBox flagWhenIdleCB;
     private JCheckBox clearOutputForErrorCB;
-    private JList itemList;
-    private DefaultListModel itemListModel;
-    private JList propList;
-    private DefaultListModel propListModel;
-    private JComboBox paymantFormCombo;
-    private JComboBox vatIdCombo;
-    private JComboBox vatIdCombo_2;
-    private JComboBox adjustmentTypeCombo;
-    private JComboBox reportTypeCombo;
-    private JComboBox totalTypeCombo;
+    private JList<String> itemList;
+    private DefaultListModel<String> itemListModel;
+    private JList<String> propList;
+    private DefaultListModel<String> propListModel;
+    private JComboBox<String> paymantFormCombo;
+    private JComboBox<String> vatIdCombo;
+    private JComboBox<String> vatIdCombo_2;
+    private JComboBox<String> adjustmentTypeCombo;
+    private JComboBox<String> reportTypeCombo;
+    private JComboBox<String> totalTypeCombo;
     private JRadioButton firmwareRB;
     private JRadioButton printerIDRB;
     private JRadioButton currentTotalRB;
@@ -1719,8 +1719,8 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             label = new JLabel("Property : ");
             label.setMaximumSize(new Dimension(160,17));
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
-            propListModel = new DefaultListModel();
-            propList = new JList(propListModel);
+            propListModel = new DefaultListModel<String>();
+            propList = new JList<String>(propListModel);
             propList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             propList.setLayoutOrientation(JList.VERTICAL);
             propList.setVisibleRowCount(7);
@@ -2018,7 +2018,7 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             label.setMaximumSize(new Dimension(130,22));
             label.setPreferredSize(new Dimension(130,22));
             comboPanel.add(label);
-            paymantFormCombo = new JComboBox();
+            paymantFormCombo = new JComboBox<String>();
             paymantFormCombo.setMaximumSize(new Dimension(150,22));
             paymantFormCombo.setPreferredSize(new Dimension(150,22));
             paymantFormCombo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -2031,7 +2031,7 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             label.setMaximumSize(new Dimension(130,22));
             label.setPreferredSize(new Dimension(130,22));
             comboPanel.add(label);
-            vatIdCombo = new JComboBox();
+            vatIdCombo = new JComboBox<String>();
             vatIdCombo.setMaximumSize(new Dimension(150,22));
             vatIdCombo.setPreferredSize(new Dimension(150,22));
             vatIdCombo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -2044,7 +2044,7 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             label.setMaximumSize(new Dimension(130,22));
             label.setPreferredSize(new Dimension(130,22));
             comboPanel.add(label);
-            adjustmentTypeCombo = new JComboBox();
+            adjustmentTypeCombo = new JComboBox<String>();
             adjustmentTypeCombo.setMaximumSize(new Dimension(150,22));
             adjustmentTypeCombo.setPreferredSize(new Dimension(150,22));
             adjustmentTypeCombo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -2154,7 +2154,7 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             label.setMaximumSize(new Dimension(110,22));
             label.setPreferredSize(new Dimension(110,22));
             comboPanel.add(label);
-            reportTypeCombo = new JComboBox();
+            reportTypeCombo = new JComboBox<String>();
             reportTypeCombo.setMaximumSize(new Dimension(110,22));
             reportTypeCombo.setPreferredSize(new Dimension(110,22));
             reportTypeCombo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -2193,8 +2193,8 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             itemListPanel.add(label);
             
-            itemListModel = new DefaultListModel();
-            itemList = new JList(itemListModel);
+            itemListModel = new DefaultListModel<String>();
+            itemList = new JList<String>(itemListModel);
             itemList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             itemList.setLayoutOrientation(JList.VERTICAL);
             itemList.setVisibleRowCount(7);
@@ -2276,7 +2276,7 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             grandTotalizerRB.setAlignmentX(Component.CENTER_ALIGNMENT);
             bgbis.add(grandTotalizerRB);dataPanelBis.add(grandTotalizerRB);
             
-            totalTypeCombo = new JComboBox();
+            totalTypeCombo = new JComboBox<String>();
             totalTypeCombo.setMaximumSize(new Dimension(160,22));
             totalTypeCombo.setPreferredSize(new Dimension(160,22));
             totalTypeCombo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -2287,7 +2287,7 @@ public class FiscalPrinterPanel extends Component implements StatusUpdateListene
             totalTypeCombo.addItem("Voided Item Totalizer");totalTypeCombo.addItem("Discount Totalizer");
             totalTypeCombo.addItem("Gross Totalizer");
             dataPanelBis.add(totalTypeCombo);
-            vatIdCombo_2 = new JComboBox();
+            vatIdCombo_2 = new JComboBox<String>();
             vatIdCombo_2.setMaximumSize(new Dimension(150,22));
             vatIdCombo_2.setPreferredSize(new Dimension(150,22));
             vatIdCombo_2.setAlignmentX(Component.CENTER_ALIGNMENT);

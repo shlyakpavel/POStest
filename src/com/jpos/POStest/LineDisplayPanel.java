@@ -48,17 +48,17 @@ public class LineDisplayPanel extends Component {
     private JTextField brVal;
     private JButton blinkRateButton;
     
-    private JComboBox rowCombo;
-    private JComboBox columnCombo;
-    private JComboBox attrCombo;
+    private JComboBox<Integer> rowCombo;
+    private JComboBox<Integer> columnCombo;
+    private JComboBox<String> attrCombo;
     
-    private JComboBox descCombo;
+    private JComboBox<Integer> descCombo;
     private JButton descOnButton;
     private JButton descOffButton;
     private JButton descClearButton;
     
-    private JList windowList;
-    private DefaultListModel windowListModel;
+    private JList<String> windowList;
+    private DefaultListModel<String> windowListModel;
     
     private JButton displayTextAtButton;
     private JButton displayTextButton;
@@ -900,10 +900,10 @@ public class LineDisplayPanel extends Component {
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             
             
-            windowListModel = new DefaultListModel();
+            windowListModel = new DefaultListModel<String>();
             windowListModel.addElement(new String("0"));
             
-            windowList = new JList(windowListModel);
+            windowList = new JList<String>(windowListModel);
             windowList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             windowList.setLayoutOrientation(JList.VERTICAL);
             windowList.setVisibleRowCount(7);
@@ -971,7 +971,7 @@ public class LineDisplayPanel extends Component {
             label = new JLabel("Row: ");
             rowPanel.add(label);
             
-            rowCombo = new JComboBox();
+            rowCombo = new JComboBox<Integer>();
             rowCombo.setAlignmentX(Component.RIGHT_ALIGNMENT);
             rowCombo.setMaximumSize(new Dimension(50,30));
             rowPanel.add(rowCombo);
@@ -983,7 +983,7 @@ public class LineDisplayPanel extends Component {
             label = new JLabel("Column: ");
             columnPanel.add(label);
             
-            columnCombo = new JComboBox();
+            columnCombo = new JComboBox<Integer>();
             columnCombo.setMaximumSize(new Dimension(50,30));
             columnCombo.setAlignmentX(Component.RIGHT_ALIGNMENT);
             columnPanel.add(columnCombo);
@@ -994,7 +994,7 @@ public class LineDisplayPanel extends Component {
             
             label = new JLabel("Attribute: ");
             attrPanel.add(label);
-            attrCombo = new JComboBox();
+            attrCombo = new JComboBox<String>();
             attrCombo.setMaximumSize(new Dimension(80,30));
             attrCombo.setAlignmentX(Component.RIGHT_ALIGNMENT);
             attrPanel.add(attrCombo);
@@ -1174,7 +1174,7 @@ public class LineDisplayPanel extends Component {
             label = new JLabel("Descriptors");
             label.setAlignmentX(Component.CENTER_ALIGNMENT);
             
-            descCombo = new JComboBox();
+            descCombo = new JComboBox<Integer>();
             descCombo.setMaximumSize(new Dimension(50,30));
             descCombo.setAlignmentX(Component.CENTER_ALIGNMENT);
             
