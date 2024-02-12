@@ -351,7 +351,7 @@ public class BiometricsPanel extends Component implements StatusUpdateListener, 
     }
     private class StatusTimerUpdateTask extends java.util.TimerTask{
         public void run(){
-            if(biometrics != null){
+            if(mainButtonPanel != null && biometrics != null){
                 mainButtonPanel.currentStatus.setText(MainButtonPanel.getStatusString(biometrics.getState()));
             }
         }
