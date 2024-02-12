@@ -304,10 +304,6 @@ public class BiometricsPanel extends Component implements StatusUpdateListener, 
         {
             retval += "Signature, ";
         }
-        if((cap & BiometricsConst.BIO_CST_KEYSTOKE_DYNAMICS) > 0)
-        {
-            retval += "Keystrokes, ";
-        }
         if((cap & BiometricsConst.BIO_CST_LIP_MOVEMENT) > 0)
         { 
             retval += "Lip Movement, ";
