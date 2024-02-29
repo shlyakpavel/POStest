@@ -63,6 +63,9 @@ public class ScannerPanel extends Component implements DataListener,
     private JTextArea scanDataLabelTextArea;
     private JScrollPane scanDataLabelScrollPane;
     
+    private JLabel deviceHealthStatusLabel;
+    private JButton checkHealthButton;
+    
     private JCheckBox autoDisableCB;
     private JCheckBox dataEventEnabledCB;
     private JCheckBox deviceEnabledCB;
@@ -73,6 +76,7 @@ public class ScannerPanel extends Component implements DataListener,
     private JButton refreshFieldsButton;
     
     private JLabel dataCountLabel;
+    private JLabel deviceHealthLabel;
     private java.util.Timer updateDatacountTimer;
     DataCountTimerUpdateTask updateDataCountTask;
     
@@ -208,6 +212,7 @@ public class ScannerPanel extends Component implements DataListener,
         scanDataTypePanel.add(scanDataTypeTextField);
         scanDataTypePanel.add(Box.createHorizontalGlue());
         
+        
         label = new JLabel("Scan Data Label: ");
         label.setPreferredSize(new Dimension(130, 25));
         scanDataLabelTextArea = new JTextArea(5,5);
@@ -227,6 +232,9 @@ public class ScannerPanel extends Component implements DataListener,
         dataCountLabel.setMaximumSize(new Dimension(Short.MAX_VALUE,25));
         label.setPreferredSize(new Dimension(130, 25));
         
+        deviceHealthLabel = new JLabel("Device Health: ");
+        deviceHealthLabel.setMaximumSize(new Dimension(Short.MAX_VALUE,25));
+        
         clearFieldsButton = new JButton("Clear Fields");
         clearFieldsButton.setActionCommand("clearFields");
         clearFieldsButton.addActionListener(this);
@@ -234,6 +242,23 @@ public class ScannerPanel extends Component implements DataListener,
         refreshFieldsButton = new JButton("Refresh Fields");
         refreshFieldsButton.setActionCommand("refreshFields");
         refreshFieldsButton.addActionListener(this);
+        
+        deviceHealthStatusLabel = new JLabel("Device Health: Unknown");
+        deviceHealthStatusLabel.setMaximumSize(new Dimension(Short.MAX_VALUE, 25));
+        deviceHealthStatusLabel.setPreferredSize(new Dimension(130, 25));
+
+        checkHealthButton = new JButton("Check Health");
+        checkHealthButton.setActionCommand("checkHealth");
+        checkHealthButton.addActionListener(this);
+
+        JPanel healthPanel = new JPanel();
+        healthPanel.setLayout(new BoxLayout(healthPanel, BoxLayout.X_AXIS));
+        healthPanel.add(deviceHealthStatusLabel);
+        healthPanel.add(checkHealthButton);
+        healthPanel.add(Box.createHorizontalGlue());
+
+        mainPanel.add(healthPanel);
+
         
         clearFieldsPanel.add(dataCountLabel);
         clearFieldsPanel.add(clearFieldsButton);
@@ -419,6 +444,15 @@ public class ScannerPanel extends Component implements DataListener,
                 JOptionPane.showMessageDialog(null, "clearInputProperties threw a JposException: "+ je.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
             }
         }
+        else if (ae.getActionCommand().equals("checkHealth")) {
+            try {
+                scanner.checkHealth(JposConst.JPOS_CH_INTERNAL);
+                String healthStatus = scanner.getCheckHealthText();
+                deviceHealthStatusLabel.setText("Device Health: " + healthStatus);
+            } catch (JposException je) {
+                JOptionPane.showMessageDialog(null, "checkHealth threw a JposException: " + je.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+            }
+        }
         else
         {
             JOptionPane.showMessageDialog(null, "Unknown Action event recieved, someone forgot to implement something.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -555,6 +589,7 @@ public class ScannerPanel extends Component implements DataListener,
     public void updateGUI() {
         scanDataTextArea.setText(new String(scanData));
         scanDataLabelTextArea.setText(new String(scanDataLabel));
+
 
         if(scanDataType == -1){
         	scanDataTypeTextField.setText("");
