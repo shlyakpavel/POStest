@@ -213,7 +213,7 @@ public class FirmwareUpdateDlg extends JDialog implements ActionListener, Status
             if(compareRadio.isSelected()){
                 try{
                     int[] result = new int[1];
-                    Object[] args = new Object[1];
+                    Object[] args = new Object[2];
                     args[0] = fileNameTF.getText();
                     args[1] = result;
                     compareMethod.invoke(deviceObject, args);
